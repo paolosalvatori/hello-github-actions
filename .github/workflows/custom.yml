@@ -1,5 +1,5 @@
 name: This custom workflow is trigger via HTTP 
-on: 
+on:
   repository_dispatch:
     types: [dump_payload]
 jobs:
@@ -13,6 +13,6 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: Dump payload
         env:
-          PAYLOAD: ${{ toJson(github.event.body) }}"
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}"
         run: echo "$PAYLOAD"
       
