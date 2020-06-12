@@ -7,12 +7,18 @@ jobs:
     name: Dump context and payload
     runs-on: [ubuntu-latest]
     steps:
-      - name: Dump GitHub context
+      - name: Dump GitHub Context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - name: Dump payload
+      - name: Dump Payload
         env:
           PAYLOAD: ${{ toJson(github.event.client_payload) }}"
         run: echo "$PAYLOAD"
+      - name: Echo Parameters
+        env: 
+          NAME: ${{ github.event.client_payload.name }}
+          SURNAME: ${{ github.event.client_payload.surname }}
+          SCRIPT: ${{ github.event.client_payload.script }}
+        run: echo "name=$NAME surname=$SURNAME script=$SCRIPT""
       
