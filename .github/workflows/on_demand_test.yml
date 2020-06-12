@@ -19,6 +19,5 @@ jobs:
         env: 
           NAME: ${{ github.event.client_payload.name }}
           SURNAME: ${{ github.event.client_payload.surname }}
-          SCRIPT: ${{ github.event.client_payload.script }}
-        run: echo "name=$NAME surname=$SURNAME script=$SCRIPT"
+        run: echo "name=$NAME surname=$SURNAME"
       
