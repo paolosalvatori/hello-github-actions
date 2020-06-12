@@ -1,18 +1,18 @@
 name: This custom workflow is trigger via HTTP 
 on: 
   repository_dispatch:
-    types: [dump_context]
+    types: [dump_payload]
 jobs:
   dumpContext:
     name: Dump context and payload
     runs-on: [ubuntu-latest]
-    - steps:
+    steps:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       - name: Dump payload
         env:
-          PAYLOAD: ${{ github.event.body }}"
+          PAYLOAD: ${{ toJson(github.event.body) }}"
         run: echo "$PAYLOAD"
       
